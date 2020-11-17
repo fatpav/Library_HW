@@ -43,26 +43,30 @@ public class LibraryTest {
         library.addBook(book6);
         library.addBook(book7);
         library.addBook(book8);
-        library.addBook(book9);
-        library.addBook(book10);
-        library.addBook(book11);
+
 
     }
 
     @Test
     public void libraryStartsWithBooks(){
-        assertEquals(10, library.bookTotal());
+        assertEquals(7, library.bookTotal());
     }
 
     @Test
     public void canAddBookToStockIfThereIsSpace(){
         library.addBook(book);
-        assertEquals(10, library.bookTotal());
+        assertEquals(8, library.bookTotal());
     }
 
     @Test
     public void checkCapacity(){
         assertEquals(10, library.checkCapacity());
+    }
+
+    @Test
+    public void canCheckOutBook(){
+        library.checkOut();
+        assertEquals(6, library.bookTotal());
     }
 
 }

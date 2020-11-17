@@ -29,4 +29,8 @@ public class Library {
         return this.capacity;
     }
 
+    public Book checkOut(){
+        return this.stock.remove(0);
+    }
+
 }
