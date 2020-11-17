@@ -19,10 +19,12 @@ public class LibraryTest {
     private Book book12;
 
     private Library library;
+    private BookIndex bookIndex;
 
     @Before
     public void before(){
         library = new Library();
+        bookIndex = new BookIndex();
         book = new Book ("Look to Windward", "Iain M Banks", "Sci-Fi");
         book2 = new Book ("Berlin", "Anthony Beevor", "History");
         book3 = new Book ("Dance of Dragons", "George RR Martin", "Fantasy");
@@ -67,6 +69,26 @@ public class LibraryTest {
     public void canCheckOutBook(){
         library.checkOut();
         assertEquals(6, library.bookTotal());
+    }
+
+    @Test
+    public void indexHasNoBooks(){
+        assertEquals(0, bookIndex.indexCount());
+    }
+
+    @Test
+    public void canAddBookToIndex(){
+        bookIndex.addBook(book);
+        assertEquals(1, bookIndex.indexCount());
+    }
+
+    @Test
+    public void canCountIndexByGenre(){
+        bookIndex.addBook(book);
+        bookIndex.addBook(book2);
+        bookIndex.addBook(book3);
+        bookIndex.addBook(book5);
+        assertEquals(2, bookIndex.genreCount());
     }
 
 }
